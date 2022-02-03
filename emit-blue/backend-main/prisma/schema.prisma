@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  uuid             String          @default(uuid())
+  id               Int             @id @default(autoincrement())
+  username         String          @db.VarChar(255)
+  email            String          @db.VarChar(255)
+  password         String          @db.VarChar(255)
+  discordId        String          @default("0") @db.VarChar(255)
+  apiKey           String          @db.VarChar(255)
+  embedName        String?         @db.Text
+  embedAuthor      String?         @db.Text
+  embedNameUrl     String?         @db.Text
+  embedAuthorUrl   String?         @db.Text
+  embedTitle       String?         @db.Text
+  embedDesc        String?         @db.Text
+  embedColour      String          @default("colour") @db.VarChar(255)
+  randomColour     Boolean         @default(true)
+  urlType          Int             @default(1)
+  domain           String          @default("e") @db.VarChar(255)
+  useSubdomain     Boolean         @default(true)
+  subdomain        String          @default("woo") @db.VarChar(255)
+  fakeUrl          String          @default("https://discord.com") @db.VarChar(255)
+  admin            Boolean         @default(false)
+  invites          invite[]        @relation("user")
+  availableInvites Int             @default(0)
+  invitedBy        invite?         @relation("usedBy")
+  donatedDomains   domain[]        @relation("domains")
+  userDomains      userDomain[]    @relation("user_domain")
+  userSubdomains   userSubdomain[] @relation("user_subdomain")
+  urlPrefix        String?
+  userImages       userImage[]     @relation("user_image")
+}
+
+model userImage {
+  user           user   @relation("user_image", fields: [userId], references: [id])
+  userId         Int
+  uuid           String @default(uuid())
+  id             Int    @id @default(autoincrement())
+  key            String @db.Text
+  size           String @db.Text
+  extension      String @db.Text
+  embedName      String @db.Text
+  embedAuthor    String @db.Text
+  embedNameUrl   String @db.Text
+  embedAuthorUrl String @db.Text
+  embedTitle     String @db.Text
+  embedDesc      String @db.Text
+  embedColour    String @db.Text
+}
+
+model userDomain {
+  id       Int    @id @default(autoincrement())
+  domainId Int
+  user     user   @relation("user_domain", fields: [userId], references: [id])
+  userId   Int
+  domain   domain @relation("domain", fields: [domainId], references: [id])
+}
+
+model userSubdomain {
+  id     Int    @id @default(autoincrement())
+  user   user   @relation("user_subdomain", fields: [userId], references: [id])
+  userId Int
+  name   String
+}
+
+model domain {
+  id          Int          @id @default(autoincrement())
+  name        String
+  wildcard    Boolean      @default(true)
+  donator     user?        @relation("domains", fields: [donatedBy], references: [id])
+  donatedBy   Int?
+  userOnly    Boolean      @default(false)
+  userDomains userDomain[] @relation("domain")
+}
+
+model invite {
+  uuid     String @default(uuid())
+  id       Int    @id @default(autoincrement())
+  user     user   @relation("user", fields: [userId], references: [id])
+  userId   Int
+  usedBy   user?  @relation("usedBy", fields: [usedById], references: [id])
+  usedById Int?
+  code     String
+}

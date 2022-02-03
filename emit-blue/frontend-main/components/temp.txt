@@ -1,0 +1,49 @@
+   <Box sx={{height:"100vh",background:"#121212",display:"flex",justifyContent:"center",alignContent:"center"}}>
+      <Box sx={{display:"flex",flexWrap:"wrap",justifyContent:"center",height:"7em"}}>
+      <Card variant="elevation" sx={{minWidth:"10em",m:"2em",px:"3em",background:"#1e232b",borderLeft:"solid",borderLeftWidth:"0.3em",borderLeftColor:"#3B82F6"}}>
+        <CardContent>
+          <Box sx={{display:"flex",flexDirection:"column"}}>
+            <Typography align="center">
+              <PeopleIcon fontSize="large" sx={{color:'GrayText',textAlign:"center",mx:"auto"}} />
+            </Typography>
+            <Typography align="center" color="GrayText" fontWeight="bold">
+              69
+            </Typography>
+            <Typography align="center" color="GrayText" fontWeight="bold">
+              Registered users
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+      <Card variant="elevation" sx={{minWidth:"10em",m:"2em",px:"3em",background:"#1e232b",borderLeft:"solid",borderLeftWidth:"0.3em",borderLeftColor:"#3B82F6"}}>
+        <CardContent>
+          <Box sx={{display:"flex",flexDirection:"column"}}>
+            <Typography align="center">
+              <PeopleIcon fontSize="large" sx={{color:'GrayText',textAlign:"center",mx:"auto"}} />
+            </Typography>
+            <Typography align="center" color="GrayText" fontWeight="bold">
+              69
+            </Typography>
+            <Typography align="center" color="GrayText" fontWeight="bold">
+              Registered users
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+      <Card variant="elevation" sx={{minWidth:"10em",m:"2em",px:"3em",background:"#1e232b",borderLeft:"solid",borderLeftWidth:"0.3em",borderLeftColor:"#3B82F6"}}>
+        <CardContent>
+          <Box sx={{display:"flex",flexDirection:"column"}}>
+            <Typography align="center">
+              <PeopleIcon fontSize="large" sx={{color:'GrayText',textAlign:"center",mx:"auto"}} />
+            </Typography>
+            <Typography align="center" color="GrayText" fontWeight="bold">
+              69
+            </Typography>
+            <Typography align="center" color="GrayText" fontWeight="bold">
+              Registered users
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+      </Box>
+    </Box>

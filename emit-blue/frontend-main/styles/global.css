@@ -1,0 +1,13 @@
+* {
+    margin:0%
+}
+
+.active {
+    border-left: solid !important;
+    border-left-width: 0.2em !important;
+    border-left-color: #1476ff !important;
+}
+
+.bruh {
+    padding-right: 0px !important;
+}
